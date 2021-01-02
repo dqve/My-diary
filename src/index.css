@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.entry-list__item--date {
+  font-size: 14px;
+}
+.entry-list__item--delete {
+  color: red;
+  font-size: 14px;
+  padding-left: 20px;
+  font-family: sans-serif;
+  cursor: pointer;
+}

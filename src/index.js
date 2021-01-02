@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import useJournal from './hooks/useJournal'
+import EntryList from './components/EntryList'
+import Entry from './components/Entry'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// import moment from 'moment'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App() {
+  const [entries, storeEntry, removeEntry, editEntry] = useJournal();
+  const handleAddEntry = (entry) => storeEntry(entry);
+  const handleDeleteEntry = (index) => removeEntry(index);
+  const handleEditEntry = (index, entry) => editEntry(index, entry);
+  return (
+    <div className="container">
+      <h1 className="text-center">
+        <a 
+          href={`https://dev.to/chaituknag/a-simple-journal-app-using-react-localstorage-and-fun-23j8`} 
+          target="_blank"
+        >My Daily Diary</a>
+      </h1>
+      <Entry addEntry={handleAddEntry}/>
+      <EntryList list={entries} deleteEntry={handleDeleteEntry} editEntry={handleEditEntry}/>
+    </div>
+  )
+}
+
+ReactDOM.render(<App/>, document.getElementById('root'));
+
+
