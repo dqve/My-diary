@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import Moment from 'react-moment';
 
 function EntryList({list, deleteEntry, editEntry}) {
@@ -6,7 +6,7 @@ function EntryList({list, deleteEntry, editEntry}) {
       deleteEntry(index);
     }
     
-    const [edited, setEdited] = useState("");
+    // const [edited, setEdited] = useState("");
     const [disabled, setDisabled] = useState({});
     
     const handleEditClick = (index, entry) => e => {
