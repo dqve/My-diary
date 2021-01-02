@@ -15,10 +15,7 @@ function App() {
   return (
     <div className="container">
       <h1 className="text-center">
-        <a 
-          href={`https://dev.to/chaituknag/a-simple-journal-app-using-react-localstorage-and-fun-23j8`} 
-          target="_blank"
-        >My Daily Diary</a>
+        My Daily Diary
       </h1>
       <Entry addEntry={handleAddEntry}/>
       <EntryList list={entries} deleteEntry={handleDeleteEntry} editEntry={handleEditEntry}/>

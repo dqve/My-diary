@@ -6,11 +6,11 @@ function EntryList({list, deleteEntry, editEntry}) {
       deleteEntry(index);
     }
     
-    // const [edited, setEdited] = useState("");
+    const [edited, setEdited] = useState("");
     const [disabled, setDisabled] = useState({});
     
     const handleEditClick = (index, entry) => e => {
-      setDisabled({...disabled, index:true})
+        disabled.index? setDisabled({...disabled, [index]:true}): setDisabled({...disabled, [index]:!disabled.index})
       // editEntry(index, entry);
     }
     const fieldRef = useRef();
@@ -42,9 +42,9 @@ function EntryList({list, deleteEntry, editEntry}) {
                   {/* <p className="card-text">{item.message}</p> */}
                   <div className="card-footer" style={{display: "flex"}}>
                   <div>Added <Moment fromNow>{itemAdded}</Moment> </div>
-                  <div className=" align-items-right  text-lg-right justify-content-end" style={{marginLeft: "25%"}}>
+                  <div className=" align-items-right  text-lg-right justify-content-end" style={{marginLeft: "35%"}}>
                   <button className="btn btn-sm btn-primary" 
-                    onClick={handleEditClick(i)}>Edit</button>
+                    onClick={handleEditClick(i)} style={{marginRight: "25px"}}>{disabled.i?"Save Edit":"Edit"}</button>
                   <button className="btn btn-sm btn-danger" 
                     onClick={handleDeleteClick(i)}>Delete</button>
                   </div>
