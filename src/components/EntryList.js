@@ -1,15 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react';
+import Moment from 'react-moment';
 
 function EntryList({list, deleteEntry, editEntry}) {
     const handleDeleteClick = (index) => e => {
       deleteEntry(index);
     }
-  
+    
     const [edited, setEdited] = useState("");
     const [disabled, setDisabled] = useState({});
-  
+    
     const handleEditClick = (index, entry) => e => {
-      setDisabled({...disabled, index:false})
+      setDisabled({...disabled, index:true})
       // editEntry(index, entry);
     }
     const fieldRef = useRef();
@@ -19,12 +20,12 @@ function EntryList({list, deleteEntry, editEntry}) {
         {
           list && list.map((item, i) => {
             const itemDate = item.date;
-            const itemAdded = moment(item.added).fromNow();
+            const itemAdded = item.added
             const flagColor = item.flag ? `bg-${item.flag} text-white` : '';
             return (
-              <div className={`card mb-2 ${flagColor}`}>
+              <div key={i} className={`card mb-2 ${flagColor}`}>
                 <div className="card-body">
-                  <h6 className="card-title">For {itemDate}</h6>
+                  <h6 className="card-title">My entry for {itemDate}</h6>
                   <textarea 
                     className="fcard-text"
                     value={item.message}
@@ -34,13 +35,13 @@ function EntryList({list, deleteEntry, editEntry}) {
                     maxLength={100}
                     width="100%"
                     ref={fieldRef}
-                    disabled={disabled.i}
+                    disabled={disabled.i?false:true}
                     rows="5"
                     style={{border:"0px", background: 0, color: "white", height:"auto", width: "100%", outline: "none",  resize: "none"}}
                     />
                   {/* <p className="card-text">{item.message}</p> */}
-                  <div class="card-footer" style={{display: "flex"}}>
-                  <div>Added {itemAdded}</div>
+                  <div className="card-footer" style={{display: "flex"}}>
+                  <div>Added <Moment fromNow>{itemAdded}</Moment> </div>
                   <div className=" align-items-right  text-lg-right justify-content-end" style={{marginLeft: "25%"}}>
                   <button className="btn btn-sm btn-primary" 
                     onClick={handleEditClick(i)}>Edit</button>
