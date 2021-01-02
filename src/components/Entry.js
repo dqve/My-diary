@@ -44,30 +44,33 @@ function Entry({addEntry}) {
         </div>
         <div className="form-group row">
         <div className="mb-4 col-sm-4">
-        <label htmlFor="message">The Date:</label> 
+        <label htmlFor="date">The Date:</label> 
         <input type="date" name="date" onChange={handleDateChange} value={date}></input>
         </div>
-        <div className="form-check form-check-inline  col-sm-3"  style={{marginTop: "-25px"}}>
-          <input className="form-check-input" 
-            id="flagDanger" type="radio" name="flag" 
-            value="danger" defaultChecked={flag === 'danger'} 
-            onChange={handleFlagChange}/> 
-          <label className="form-check-label bg-danger text-white mr-2 pl-2 pr-2" 
-            htmlFor="flagDanger">Sad</label>
-          <input className="form-check-input" 
-            id="flagGreen" type="radio" name="flag" 
-            value="success" defaultChecked={flag === 'success'} 
-            onChange={handleFlagChange}/>
-          <label className="form-check-label bg-success text-white mr-2 pl-2 pr-2" 
-            htmlFor="flagGreen">Normal</label>
-          <input className="form-check-input" 
-            id="flagInfo" type="radio" name="flag" 
-            value="dark" defaultChecked={flag === 'dark'} 
-            onChange={handleFlagChange}/>
-          <label className="form-check-label bg-dark text-white pl-2 pr-2" 
+        <div className="form-check form-check-inline  col-sm-4"  style={{marginTop: "-25px",padding:"0"}}>
+        <label htmlFor="mood">Set Mood:</label>  
+          <div name="mood" style={{paddingLeft:"5px"}}>
+            <input className="form-check-input" 
+                id="flagDanger" type="radio" name="flag" 
+                value="danger" defaultChecked={flag === 'danger'} 
+                onChange={handleFlagChange}/> 
+            <label className="form-check-label bg-danger text-white mr-2 pl-2 pr-2" 
+                htmlFor="flagDanger">Sad</label>
+            <input className="form-check-input" 
+                id="flagGreen" type="radio" name="flag" 
+                value="success" defaultChecked={flag === 'success'} 
+                onChange={handleFlagChange}/>
+            <label className="form-check-label bg-success text-white mr-2 pl-2 pr-2" 
+                htmlFor="flagGreen">Normal</label>
+            <input className="form-check-input" 
+                id="flagInfo" type="radio" name="flag" 
+                value="dark" defaultChecked={flag === 'dark'} 
+                onChange={handleFlagChange}/>
+            <label className="form-check-label bg-dark text-white pl-2 pr-2" 
             htmlFor="flagInfo">Happy</label>
+          </div>
         </div>
-        <div className=" col-sm-3 align-items-right  text-lg-right justify-content-end" style={{marginLeft: "15%"}}>
+        <div className=" col-sm-2 align-items-right  text-lg-right justify-content-end" style={{marginLeft: "15%"}}>
           <button disabled={message.trim().length === 0 || !flag} 
           className="btn btn-success form-control" 
           type="submit">Submit</button>
