@@ -6,7 +6,7 @@ function EntryList({list, deleteEntry, editEntry}) {
       deleteEntry(index);
     }
     
-    const [edited, setEdited] = useState("");
+    // const [edited, setEdited] = useState("");
     const [disabled, setDisabled] = useState({});
     
     const handleEditClick = (index, entry) => e => {
