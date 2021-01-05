@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef /*, useEffect*/} from 'react'
 import Moment from 'react-moment'
 
 
@@ -6,14 +6,9 @@ function EntryList({list, deleteEntry, editEntry}) {
     
     const [disabled, setDisabled] = useState({})
     const [state, setState] = useState(list)
-    
-    useEffect(() =>(
-        list.map((item, i) => 
-            setDisabled(disabled => ({...disabled, i:false}))
-    )),[list])
-    
+        
     const handleEditClick = (index, entry) => e => {
-        disabled.index? setDisabled({...disabled, [index]:true}): setDisabled({...disabled, [index]:!disabled.index})
+        
       // editEntry(index, edited)
     }
 
