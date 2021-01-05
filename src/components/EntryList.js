@@ -6,10 +6,11 @@ function EntryList({list, deleteEntry, editEntry}) {
     
     const [disabled, setDisabled] = useState({})
     const [state, setState] = useState(list)
-        
+
     const handleEditClick = (index, entry) => e => {
-        
       // editEntry(index, edited)
+      setState(list)
+      setDisabled(false)
     }
 
     const handleDeleteClick = (index) => e => {
@@ -47,18 +48,16 @@ function EntryList({list, deleteEntry, editEntry}) {
                     />
                   {/* <p className="card-text">{item.message}</p> */}
                   <div className="card-footer" style={{display: "flex"}}>
-                  <div>Added <Moment fromNow>{itemAdded}</Moment> </div>
-                  <div className=" align-items-right  text-lg-right justify-content-end" style={{marginLeft: "35%"}}>
-                  <button className="btn btn-sm btn-primary" 
-                    onClick={handleEditClick(i)} style={{marginRight: "25px"}}>{disabled.i?"Save Edit":"Edit"}</button>
-                  <button className="btn btn-sm btn-danger" 
-                    onClick={handleDeleteClick(i)}>Delete</button>
+                    <div>Added <Moment fromNow>{itemAdded}</Moment> </div>
+                    <div className=" align-items-right  text-lg-right justify-content-end" style={{marginLeft: "35%"}}>
+                        <button className="btn btn-sm btn-primary" 
+                            onClick={handleEditClick(i)} style={{marginRight: "25px"}}>{disabled.i?"Save Edit":"Edit"}</button>
+                        <button className="btn btn-sm btn-danger" 
+                            onClick={handleDeleteClick(i)}>Delete</button>
+                    </div>
                   </div>
-                  
-                  </div>
-                  </div>
-  
-                </div>  
+                </div>
+            </div>
             )
           })
         }
